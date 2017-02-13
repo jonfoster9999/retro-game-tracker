@@ -17,15 +17,14 @@
 <% if current_user.id == @user.id %>
 <h5><a href="/users/<%= @user.slug %>/editgames">Manage games</a></h5>
 <% end %>
-<ul>
-<% games.order(:console_id).order(:name).each do |game| %>
-<li><%= Game.find(game.id).name %>(<%= game.year %>) 
-	<% if game.console %>
-	<%= game.console.name %>
-	<% end %>
-</li>
+<% make_game_hash(games).each do |console, game_hash| %>
+<h4><%= console %> games: </h4>
+	<ul>
+	<% game_hash.sort_by { |n| n.first }.each do |game| %>
+	<li><%= game[:name] %> (<%= game[:year] %>)</li>
 <% end %>
 </ul>
+<% end %>
 
 
 

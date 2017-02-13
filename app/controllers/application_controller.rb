@@ -57,7 +57,18 @@ class ApplicationController < Sinatra::Base
 
   	def current_user
   		User.find_by(:id => session[:id])
-	end
+	  end
+
+    def make_game_hash(games)
+      gamehash = {}
+      games.each do |game|
+        gamehash["#{game.console.name}"] = gamehash["#{game.console.name}"] || []
+        gamehash["#{game.console.name}"] << {:name => game.name, :year => game.year, :id => game.id}
+      end
+      gamehash.each do |key, value|
+        gamehash["#{key}"] = value.uniq
+      end
+    end
 
   end
 

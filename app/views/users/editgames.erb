@@ -1,2 +1,25 @@
 <div class="spacer"></div>
-<h1>EDIT GAMES FORM</h1>
+<h1><%= @user.username %>'s game collection: </h1>
+<form action="/users/<%= @user.slug %>/editgames" method="post">
+<h2>Create a new game: </h2>
+Name: <input type="text" name="user[new_game_name]" id="new_game_name"><br>
+Year: <input type="text" name="user[new_game_year]" id="new_game_year"><br>
+
+<select name="user[new_game_console_id]">
+	<% @consoles.each do |my_console| %>
+	<option value="<%= my_console.id %>" name="<%= my_console.id %>" id = "<%= my_console.id %>" ><%= my_console.name %></option>
+	<% end %>
+</select>
+<h2>Existing Games:</h2>
+<hr>
+<% @games.order(:console_id).each do |game| %>
+<input type="checkbox" name="user[game_ids][]" value="<%= game.id %>" 
+
+<% if @user.games.include?(game) %>
+	<%= "checked" %>
+<% end %>
+
+><%= game.name %>(<%= game.console.name %>)</input><br>
+<% end %>
+<input type="submit" value="submit">
+</form>
