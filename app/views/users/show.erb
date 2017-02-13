@@ -1,0 +1,31 @@
+
+
+<div class="spacer"></div>
+<h1><%= @user.username %></h1>
+<h2>Consoles: </h2>
+<% if current_user.id == @user.id %>
+<h5><a href="/users/<%= @user.slug %>/editconsoles">Manage consoles</a></h5>
+<% end %>
+<ul>
+<% @user.consoles.each do |console| %>
+<li><%= console.name %></li>
+
+<% end %>
+</ul>
+<% games = @user.games %>
+<h2>Games: </h2>
+<% if current_user.id == @user.id %>
+<h5><a href="/users/<%= @user.slug %>/editgames">Manage games</a></h5>
+<% end %>
+<ul>
+<% games.order(:console_id).order(:name).each do |game| %>
+<li><%= Game.find(game.id).name %>(<%= game.year %>) 
+	<% if game.console %>
+	<%= game.console.name %>
+	<% end %>
+</li>
+<% end %>
+</ul>
+
+
+

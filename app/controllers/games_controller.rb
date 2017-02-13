@@ -1,7 +1,11 @@
 class GamesController < ApplicationController
 
 	get '/games' do
-		"hello games"
+		erb :'games/games'
+	end
+
+	get '/games/:id' do
+		erb :'games/show'
 	end
 
 end

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+	@font-face {
+    	font-family: "computer";
+    	src: url('fonts/bit.tff');
+	}
+	header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 140px;
+		background: grey;
+		min-width: 960px;
+	}
+
+	body {
+		background-image: url("<%= url('/images/background4.jpeg') %>");
+		background-size: 100%;
+		min-width: 960px;
+
+	}
+
+	html {
+		min-width: 960px;
+	}
+
+	a {
+		color: navy;
+	}
+	.login{
+
+		width: 540px;
+
+		padding: 8px 6% 15px 6%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 400px;
+		background: rgb(247, 247, 247);
+		border: 1px solid rgba(147, 184, 189,0.8);
+		box-shadow:	
+			0pt 2px 5px rgba(105, 108, 109,  0.7),	
+			0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+		border-radius: 5px;
+	}
+
+	form {
+		padding: 0px;
+	}
+
+	.login{
+		z-index: 22;
+	}
+    
+    .homescreen {
+    	margin-top: 300px;
+    	text-align: center;
+    	color: white;
+    }
+
+	.spacer {
+		height: 140px;
+	}
+
+	.nes1 {
+		margin-top: 20px;
+		float: left;
+	}
+
+	.nes2 {
+		float: right;
+	}
+
+	.title {
+		text-align: center;
+		color: orange;
+		margin-top: 50px;
+		font-family: "computer";
+	}
+
+	.forminput {
+		float: right;
+		margin-right: 335px;
+	}
+</style>
+</head>
+<body>
+
+<header>
+<img class="nes1" src="<%= url('/images/goshdarnit.gif') %>" height=100px>
+<img class="nes1 nes2" src="<%= url('/images/goshdarnit.gif') %>" height=100px>
+
+
+<h1 class="title">Retro Game Tracker</h1>
+</header>
+
+<%= yield %>
+<% if logged_in? %>
+<h5>Logged in as <%= current_user.username %>(<a href="/logout">logout</a>)</h5>
+<% end %>
+</body>
+
+
+
+
+</html>
