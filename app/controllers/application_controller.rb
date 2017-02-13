@@ -7,26 +7,39 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-  	erb :'index'
+    if !logged_in?
+  	 erb :'index'
+    else
+      redirect '/users'
+    end
   end
 
   get '/login' do
-  	erb :'users/login'
+    if !logged_in?
+  	 erb :'users/login'
+    else
+      redirect '/users'
+    end
   end
 
   post '/login' do
     @user = User.find_by(:username => params[:username])
-    if @user.authenticate(params[:password])
+    if @user && @user.authenticate(params[:password])
       session[:id] = @user.id
       redirect '/users'
     else
-      redirect '/login'
+      @failure = "Invalid Login Information"
+      erb :'users/login'
     end
 
   end
 
   get '/signup' do
-  	erb :'users/signup'
+    if !logged_in?
+  	 erb :'users/signup'
+    else
+      redirect '/users'
+    end
   end
 
   post '/signup' do 

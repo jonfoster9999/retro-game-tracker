@@ -1,0 +1,7 @@
+<div class="spacer"></div>
+<h1>Edit console: </h1>
+<form action="/consoles/<%= @console.id %>" method="post">
+<input type="hidden" id="hidden" name="_method" value="patch">
+<p>Console Name: <input type="text" name="console_name" id="new_console_name" value="<%= @console.name %>"></p><br>
+<input type="submit" value="Edit Console">
+</form>

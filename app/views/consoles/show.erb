@@ -1,0 +1,19 @@
+<div class="spacer"></div>
+
+<h1><%= @console.name %></h1>
+<a href="/consoles/<%= @console.id %>/edit">Edit this console</a>
+<br>
+<br>
+<form action="/consoles/<%= @console.id %>/delete" method="post">
+<input type="hidden" id="hidden" name="_method" value="delete">
+<input type="submit" value="Delete">
+<h5>***WARNING***<br>
+Deleting a console deletes all of it's associated games</h5>
+</form>
+<hr align="left">
+<h2>Games for this console:</h3>
+<% @games.each do |game| %>
+<a href="/games/<%= game.id %>/"><%= game.name %></a><br>
+<% end %>
+
+<hr align="left">

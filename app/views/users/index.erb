@@ -5,7 +5,7 @@
 <div class="spacer"></div>
 <h1>Welcome, <%= @user.username %>!</h1>
 <h3><a href="/users/<%= @user.slug %>">View and Manage your collection</a></h3>
-
+<hr align="left">
 <h1>Browse Other Users:</h1>
 <% @users.each do |user| %>
 	<a href="/users/<%= user.slug %>"><%= user.username %></a>
@@ -14,3 +14,6 @@
 	<% end %>
 	<br>
 	<% end %>
+<hr align="left">
+
+

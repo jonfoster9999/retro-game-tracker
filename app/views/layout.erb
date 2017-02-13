@@ -85,6 +85,37 @@
 		float: right;
 		margin-right: 335px;
 	}
+
+	hr {
+		width: 30%;
+		color: white;
+		border-style: dotted;
+		opacity: .20;
+	
+	}
+
+	fieldset {
+		width: 270px;
+		border: none;
+	}
+
+	.input {
+		float: right;
+
+	}
+
+	.stretch {
+		width: 189px;
+		border-radius: 3px;
+	}
+
+	.failure {
+		color: red;
+		text-align: center;
+		position: absolute;
+		left: 400px;
+		top: 565px;
+	}
 </style>
 </head>
 <body>
@@ -99,7 +130,11 @@
 
 <%= yield %>
 <% if logged_in? %>
+<br>
+	<a href="/games">Games Database</a><br>
+	<a href="/consoles">Consoles Database</a>
 <h5>Logged in as <%= current_user.username %>(<a href="/logout">logout</a>)</h5>
+
 <% end %>
 </body>
 

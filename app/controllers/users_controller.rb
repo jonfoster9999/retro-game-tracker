@@ -18,14 +18,46 @@ class UsersController < ApplicationController
 	end
 
 	get '/users/:slug/editconsoles' do
-		erb :'users/editconsoles'
+		if current_user == User.find_by_slug(params[:slug])
+			@consoles = Console.all
+			@user = User.find_by_slug(params[:slug])
+			erb :'users/editconsoles'
+		else
+			"NO WAY BUB"
+		end
+	end
+
+	post '/users/:slug/editconsoles' do
+		
+		@user = User.find_by_slug(params[:slug])
+		@user.consoles.clear
+		if params[:console_name] != ""
+			name = params[:console_name]
+			console = Console.new(:name => name)
+			console = Console.find_by(:name => console.name) || console
+			console.save
+			@user.consoles << console
+			@user.save
+		end
+		if consoles = params[:user][:console_ids]
+			consoles.each do |console_id|
+				@user.consoles << Console.find(console_id)
+			end
+			@user.save
+		end
+		redirect "/users/#{@user.slug}"
+
 	end
 
 	get '/users/:slug/editgames' do
-		@games = Game.all
-		@user = User.find_by_slug(params[:slug])
-		@consoles = Console.all
-		erb :'users/editgames'
+		if current_user == User.find_by_slug(params[:slug])
+			@games = Game.all
+			@user = User.find_by_slug(params[:slug])
+			@consoles = Console.all
+			erb :'users/editgames'
+		else
+			"NOPE"
+		end
 	end
 
 	post '/users/:slug/editgames' do

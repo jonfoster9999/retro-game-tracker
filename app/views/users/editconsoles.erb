@@ -1,2 +1,20 @@
 <div class="spacer"></div>
-<h1>EDIT CONSOLES FORM</h1>
+<form action="/users/<%= @user.slug %>/editconsoles" method="post">
+<h2>Create (and add) a new Console: </h2>
+Console Name: <input type="text" name="console_name" id="new_game_name"><br>
+
+<h2>Existing Consoles <br>(check to add to your collection):</h2>
+<hr>
+<% @consoles.each do |console| %>
+<input type="checkbox" name="user[console_ids][]" value="<%= console.id %>" 
+
+<% if @user.consoles.include?(console) %>
+	<%= "checked" %>
+<% end %>
+
+><%= console.name %></input><br>
+<% end %>
+<input type="submit" value="submit">
+</form>
+
+

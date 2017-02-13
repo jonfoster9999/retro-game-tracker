@@ -1,17 +1,21 @@
 <div class="spacer"></div>
 <h1><%= @user.username %>'s game collection: </h1>
 <form action="/users/<%= @user.slug %>/editgames" method="post">
-<h2>Create a new game: </h2>
-Name: <input type="text" name="user[new_game_name]" id="new_game_name"><br>
-Year: <input type="text" name="user[new_game_year]" id="new_game_year"><br>
+<h2>Create (and add) a new game: </h2>
+<fieldset>
+<p>Name: <input class="input stretch" type="text" name="user[new_game_name]" id="new_game_name"><br></p>
+<p>Year: <input class="input stretch" type="text" name="user[new_game_year]" id="new_game_year"><br></p>
 
-<select name="user[new_game_console_id]">
+<p>Console: <select name="user[new_game_console_id]" class="input">
 	<% @consoles.each do |my_console| %>
 	<option value="<%= my_console.id %>" name="<%= my_console.id %>" id = "<%= my_console.id %>" ><%= my_console.name %></option>
 	<% end %>
-</select>
-<h2>Existing Games:</h2>
-<hr>
+</select></p>
+</fieldset>
+<h5>*** Games require an associated console.<br> If the console is not listed, <a href="/consoles/new">Create</a> one in the database ***</h5>
+<hr align="left" width="100%">
+<h2>Existing Games (check to add to your collection):</h2>
+
 <% @games.order(:console_id).each do |game| %>
 <input type="checkbox" name="user[game_ids][]" value="<%= game.id %>" 
 
@@ -19,7 +23,8 @@ Year: <input type="text" name="user[new_game_year]" id="new_game_year"><br>
 	<%= "checked" %>
 <% end %>
 
-><%= game.name %>(<%= game.console.name %>)</input><br>
+><%= game.name %> (<%= game.console.name %>)</input><br>
 <% end %>
+<br>
 <input type="submit" value="submit">
 </form>
