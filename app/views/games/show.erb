@@ -5,9 +5,9 @@
 <h3><span class="lightblue">Released in: <%= @game.year %></span></h3>
 <a href="/games/<%= @game.id %>/edit">Edit game</a>
 <form action="/games/<%= @game.id %>/delete" method="post">
-<br>
-<input type="hidden" id="hidden" name="_method" value="delete">
-<input type="submit" value="Delete">
+	<br>
+	<input type="hidden" id="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete">
 </form>
 <br>
 <hr align="left">

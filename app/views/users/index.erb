@@ -10,11 +10,11 @@
 <% @users.each do |user| %>
 	<a href="/users/<%= user.slug %>"><%= user.username %></a>
 	<% if current_user.id == user.id %>
-	<span class="red">(me)</span>
+		<span class="red">(me)</span>
 	<% end %>
 	<br>
-	<% end %>
-	<br>
+<% end %>
+<br>
 <hr align="left">
 
 

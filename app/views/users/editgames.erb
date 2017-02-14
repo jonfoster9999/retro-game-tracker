@@ -5,7 +5,6 @@
 <fieldset>
 <p>Name: <input class="input stretch" type="text" name="user[new_game_name]" id="new_game_name"><br></p>
 <p>Year: <input class="input stretch" type="text" name="user[new_game_year]" id="new_game_year"><br></p>
-
 <p>Console: <select name="user[new_game_console_id]" class="input">
 	<% @consoles.each do |my_console| %>
 	<option value="<%= my_console.id %>" name="<%= my_console.id %>" id = "<%= my_console.id %>" ><%= my_console.name %></option>

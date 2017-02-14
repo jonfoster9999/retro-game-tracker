@@ -69,7 +69,9 @@ class ApplicationController < Sinatra::Base
   	end
 
   	def current_user
-  		User.find_by(:id => session[:id])
+      if logged_in?
+  		  User.find_by(:id => session[:id])
+      end
 	  end
 
     def make_game_hash(games)

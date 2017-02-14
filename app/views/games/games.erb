@@ -1,6 +1,6 @@
 <div class="spacer"></div>
 <% if @message %>
-<h3> <%= @message %></h3>
+	<h3> <%= @message %></h3>
 <% end %>
 <a href="/games/new">Create a game</a><br>
 <div class="games">
@@ -8,9 +8,8 @@
 
 <% @games.each do |game| %>
 	<a href="/games/<%= game.id %>/"><%= game.name %></a> - <a href="/consoles/<%= game.console.id %>"><%= game.console.name %> </a>(<%= game.year %>)<br>
-	<% end %>
-
-	<br>
+<% end %>
+<br>
 <br>
 </div>
 <hr align="left">
