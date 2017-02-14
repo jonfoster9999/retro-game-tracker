@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 			@user = User.find_by_slug(params[:slug])
 			erb :'users/editconsoles'
 		else
-			"NO WAY BUB"
+			erb :'users/unauthorized'
 		end
 	end
 
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
 			@consoles = Console.all
 			erb :'users/editgames'
 		else
-			"NOPE"
+			erb :'users/unauthorized'
 		end
 	end
 

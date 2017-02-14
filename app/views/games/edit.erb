@@ -1,7 +1,7 @@
 <div class="spacer"></div>
 <form action="/games/<%= @game.id %>" method="post">
 <input type="hidden" id="hidden" name="_method" value="patch">
-<h2>Edit game: </h2>
+<h2><span class="lightblue">Edit game:</span> </h2>
 <fieldset>
 <p>Name: <input class="input stretch" type="text" name="game_name" id="game_name" value="<%= @game.name %>"></p>
 <p>Year: <input class="input stretch" type="text" name="game_year" id="game_year" value="<%= @game.year%>"></p>
@@ -16,6 +16,6 @@
 	<% end %>
 </select></p>
 </fieldset>
-<h5>*** Games require an associated console.<br> If the console is not listed, <a href="/consoles/new">Create</a> one in the database ***</h5>
+<h5><span class="red">*** Games require an associated console.<br> If the console is not listed, </span><a href="/consoles/new">Create</a> <span class="red">one in the database ***</span></h5>
 <input type="submit" value="Update Game">
 </form>
