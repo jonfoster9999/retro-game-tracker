@@ -1,14 +1,16 @@
 <div class="spacer"></div>
 <form action="/games" method="post">
-<h2>Create a new game: </h2>
-Name: <input type="text" name="new_game_name" id="new_game_name"><br>
-Year: <input type="text" name="new_game_year" id="new_game_year"><br>
+<h2><span class="lightblue">Create a new game:</span> </h2>
+<fieldset>
+<p><span class="lightblue">Name: </span><input class="input stretch" type="text" name="new_game_name" id="new_game_name"></p>
+<p><span class="lightblue">Year: </span><input class="input stretch" type="text" name="new_game_year" id="new_game_year"></p>
 
-Console: <select name="new_game_console_id">
+<p><span class="lightblue">Console:</span> <select class="input" name="new_game_console_id">
 	<% @consoles.each do |my_console| %>
 	<option value="<%= my_console.id %>" name="<%= my_console.id %>" id = "<%= my_console.id %>" ><%= my_console.name %></option>
 	<% end %>
-</select>
-<h5>*** Games require an associated console.<br> If the console is not listed, <a href="/consoles/new">Create</a> one in the database ***</h5>
+</select></p>
+</fieldset>
+<h5><span class="red">*** Games require an associated console.<br> If the console is not listed, </span><a href="/consoles/new">Create</a><span class="red"> one in the database ***</span></h5>
 <input type="submit" value="Create Game">
 </form>

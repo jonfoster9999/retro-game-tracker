@@ -1,13 +1,15 @@
 <div class="spacer"></div>
 <% if @message %>
-<h5><%= @message %></h5>
+<h5><span class="green"><%= @message %></span></h5>
 <% end %>
 <a href="/consoles/new">Create a console</a>
+<div class="games">
 <h1>All consoles: </h1>
 <% @consoles.each do |console| %>
 	<a href="/consoles/<%= console.id %>"><%=console.name %></a><br>
 	<% end %>
+	<br>
+	<br>
+	</div>
 <hr align="left">
-<a href="/consoles">Back to consoles</a>
 <br>
-<a href="/users">Back to users</a>

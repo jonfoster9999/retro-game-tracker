@@ -1,8 +1,8 @@
 <div class="spacer"></div>
 
-<h1><%= @game.name %></h1>
-<h3>For: <a href="/consoles/<%= @game.console.id %>"><%= @game.console.name %></a></h3>
-<h3>Released in: <%= @game.year %></h3>
+<h1><span class="lightblue gamebackground"><%= @game.name %></span></h1>
+<h3><span class="lightblue">For: </span><a href="/consoles/<%= @game.console.id %>"><%= @game.console.name %></a></h3>
+<h3><span class="lightblue">Released in: <%= @game.year %></span></h3>
 <a href="/games/<%= @game.id %>/edit">Edit game</a>
 <form action="/games/<%= @game.id %>/delete" method="post">
 <input type="hidden" id="hidden" name="_method" value="delete">
@@ -11,6 +11,3 @@
 <br>
 <hr align="left">
 <br>
-<a href="/games">Back to games</a>
-<br>
-<a href="/users">Back to users</a>

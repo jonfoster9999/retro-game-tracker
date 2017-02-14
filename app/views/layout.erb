@@ -28,8 +28,46 @@
 		min-width: 960px;
 	}
 
+	h5 {
+		margin-top: 0px;
+	}
+
+	.reducemargin {
+		margin-bottom: 0px;
+		border-top: 0px;
+	}
+
+
+
 	a {
-		color: navy;
+		color: lightgray;
+	}
+
+	ul {
+		margin-top: 0px;
+	}
+	.green {
+		color: green;
+	}
+
+	.gold {
+		color: black;
+		background: rgba(155, 155, 155, .3);
+		border-radius: 3px;
+		padding: 1px;
+		padding-right: 4px;
+	}
+
+	.nomargin {
+		margin: 0px;
+	}
+
+	.lightblue {
+		color: lightblue;
+	}
+
+	.red {
+		color: red;
 	}
 	.login{
 
@@ -53,6 +91,10 @@
 
 	.login{
 		z-index: 22;
+	}
+
+	.white {
+		color: white;
 	}
     
     .homescreen {
@@ -99,6 +141,12 @@
 		border: none;
 	}
 
+	.gamebackground {
+		background: rgba(25, 25, 25, .9);
+		padding: 15px;
+		border-radius: 5px;
+	}
+
 	.input {
 		float: right;
 
@@ -113,8 +161,16 @@
 		color: red;
 		text-align: center;
 		position: absolute;
-		left: 400px;
-		top: 565px;
+		left: 327px;
+		top: 587px;
+	}
+
+	.games {
+		background: rgba(95, 95, 95, 0.88);
+		width: 50%;
+		border-radius: 10px;
+		box-shadow: 10px 5px 5px black;
+
 	}
 </style>
 </head>
@@ -131,9 +187,12 @@
 <%= yield %>
 <% if logged_in? %>
 <br>
+	<a href="/users">Home</a><br>
 	<a href="/games">Games Database</a><br>
-	<a href="/consoles">Consoles Database</a>
-<h5>Logged in as <%= current_user.username %>(<a href="/logout">logout</a>)</h5>
+	<a href="/consoles">Consoles Database</a><br>
+	
+	<br><br>
+<h5><span class="white">Logged in as</span> <span class="green"><%= current_user.username %></span>(<a href="/logout">logout</a>)</h5>
 
 <% end %>
 </body>

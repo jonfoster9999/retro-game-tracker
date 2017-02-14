@@ -3,6 +3,7 @@
 <h3> <%= @message %></h3>
 <% end %>
 <a href="/games/new">Create a game</a><br>
+<div class="games">
 <h1>All games: </h1>
 
 <% @games.each do |game| %>
@@ -11,7 +12,5 @@
 
 	<br>
 <br>
+</div>
 <hr align="left">
-<a href="/games">Back to games</a>
-<br>
-<a href="/users">Back to users</a>

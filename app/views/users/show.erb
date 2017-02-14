@@ -1,35 +1,34 @@
 
 
 <div class="spacer"></div>
-<h1><%= @user.username %></h1>
+<h1><span class="green"><%= @user.username %></span></h1>
 
-<h2>Consoles: </h2>
+<h2 class="reducemargin"><span class="red">Consoles:</span> </h2>
 <% if current_user.id == @user.id %>
 <h5><a href="/users/<%= @user.slug %>/editconsoles">Manage my consoles</a></h5>
 <% end %>
 <ul>
 <% @user.consoles.sort_by { |c| c.name }.each do |console| %>
-<li><a href="/consoles/<%= console.id %>"><%= console.name %></a></li>
+<li><a href="/consoles/<%= console.id %>"><h3 class="nomargin"><%= console.name %></h3></a></li>
 
 <% end %>
 </ul>
 <% games = @user.games %>
 <hr align="left">
-<h2>Games: </h2>
+<h2 class="reducemargin"><span class="red">Games: </span></h2>
 <% if current_user.id == @user.id %>
 <h5><a href="/users/<%= @user.slug %>/editgames">Manage my games</a></h5>
 <% end %>
 <% make_game_hash(games).each do |console, game_hash| %>
-<h4><%= console %> games: </h4>
+<h4><span class="gold"><%= console %> games: </span></h4>
 	<ul>
 	<% game_hash.sort_by { |n| n.first }.each do |game| %>
-	<li><a href="/games/<%= game[:id] %>/"><%= game[:name] %></a> (<%= game[:year] %>)</li>
+	<li><a href="/games/<%= game[:id] %>/"><%= game[:name] %></a><span class="lightblue"> (<%= game[:year] %>)</span></li>
 <% end %>
 </ul>
 <% end %>
 <br>
 <hr align="left">
-<a href="/users">Back to users</a>
 
 
 
