@@ -1,0 +1,1 @@
+This is a CRUD based application built in Sinatra that lets users create a profile and manage their retro video game consoles and games.
