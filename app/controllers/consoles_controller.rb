@@ -11,12 +11,13 @@ class ConsolesController < ApplicationController
 
 	post '/consoles' do
 		name = params[:new_console_name]
-		console = Console.new(:name => name)
+		console = Console.find_by(:name => name) || Console.new(:name => name)
 		if console.save
 			@message = "#{console.name} was created."
 			redirect '/consoles'
 		else
-			redirect '/consoles/new'
+			@message = "Console requires a name!"
+			erb :'/consoles/new'
 		end
 	end
 
@@ -33,8 +34,7 @@ class ConsolesController < ApplicationController
 
 	patch '/consoles/:id' do
 		@console = Console.find(params[:id])
-		@console.name = params[:console_name]
-		if @console.save
+		if @console.update(:name => params[:console_name])
 			@message = "#{@console.name} has been successfully updated."
 			@consoles = Console.all
 			erb :'consoles/consoles'

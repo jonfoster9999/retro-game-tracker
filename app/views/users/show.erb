@@ -18,7 +18,7 @@
 <% if current_user.id == @user.id %>
 	<h5><a href="/users/<%= @user.slug %>/editgames">Manage my games</a></h5>
 <% end %>
-<% make_game_hash(games).each do |console, game_hash| %>
+<% Game.make_game_hash(games).each do |console, game_hash| %>
 	<h4><span class="gold"><%= console %> games: </span></h4>
 	<ul>
 		<% game_hash.sort_by { |n| n.first }.each do |game| %>

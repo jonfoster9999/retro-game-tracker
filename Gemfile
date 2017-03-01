@@ -3,7 +3,6 @@ source "https://rubygems.org"
 
 # gem "rails"
 
-gem 'sinatra'
 
 gem 'sinatra'
 gem 'activerecord', :require => 'active_record'

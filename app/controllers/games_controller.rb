@@ -22,15 +22,13 @@ class GamesController < ApplicationController
 	end
 
 	post '/games' do
-		name = params[:new_game_name]
-		year = params[:new_game_year]
-		console = Console.find(params[:new_game_console_id])
-		game = Game.new(:name => name, :year => year)
-		game.console = console
+		game = Game.new(game_params(params))
 		if game.save
 			redirect '/games'
 		else
-			redirect '/games/new'
+			@message = "Please complete all the fields."
+			@consoles = Console.all
+			erb :'/games/new'
 		end
 	end
 
@@ -44,17 +42,21 @@ class GamesController < ApplicationController
 
 	patch '/games/:id' do
 		@game = Game.find(params[:id])
-		@game.name = params[:game_name]
-		@game.year = params[:game_year]
-		@game.console = Console.find(params[:game_console_id])
-		if @game.save
+		# use game.update instead 
+		if @game.update(:name => params[:game_name], :year =>params[:game_year], :console => Console.find(params[:game_console_id]))
 			@message = "#{@game.name} has been updated."
 			@games = Game.all
 			erb :'games/games'
 		else
 			redirect "/games/#{@game.id}/edit"
 		end
-
 	end
+
+	private
+
+	def game_params(params)
+ 		{:name => params[:new_game_name], :year => params[:new_game_year], :console => Console.find(params[:new_game_console_id])}
+	end
+
 
 end

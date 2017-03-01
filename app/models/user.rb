@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
 	has_many :games, through: :user_games
 
 	has_secure_password
-	validates :username, presence: true
-	validates :email, presence: true
+	validates :username, :email, presence: true
+	validates :email, :username, uniqueness: true
 
 
 	def slug

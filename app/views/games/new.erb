@@ -1,4 +1,7 @@
 <div class="spacer"></div>
+<% if @message %>
+	<span class="red"><%= @message %></span>
+<% end %>
 <form action="/games" method="post">
 	<h2><span class="lightblue">Create a new game:</span> </h2>
 	<fieldset>
